@@ -1,0 +1,35 @@
+{% load cms_tags menu_tags sekizai_tags staticfiles %}
+<!doctype html lang="{{ LANGUAGE_CODE }}">
+<html>
+	<head>
+		<title>{% block title %}{% page_attribute "page_title" %}{% endblock title %}</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta name="description" content="{% page_attribute 'meta_description' %}">
+		<link href="{% static 'mircomcms/css/base.css' %}" media="screen" type="text/css" rel="stylesheet"/>
+		<link rel='icon' type='image/png' href="{% static 'img/favicon.png' %}">
+		{% render_block "css" %}
+	</head>
+	<body>
+		<div class='pagewrapper'>
+			{% cms_toolbar %}
+			<div id="header">
+				{% show_menu 0 100 100 100 "navbar.html" %}
+			</div>
+			<div id="content">
+				{% block content %}
+					{% placeholder "content" %}
+				{% endblock content %}
+			</div>
+			<div id="footer">
+				<div>
+					Copyright &copy; {% now "Y" %}
+					{% if request.session.cms_toolbar_disabled %}
+						<a href="?edit">Show Toolbar</a>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% render_block "js" %}
+		<script type="application/javascript" src="{% static 'mircomcms/js/navbar.js' %}" defer async></script>
+	</body>
+</html>

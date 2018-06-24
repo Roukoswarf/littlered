@@ -1,0 +1,10 @@
+{% load cms_tags %}
+{% if instance.state and request.user.is_authenticated and request.GET.auth_view != "false" %}
+	{% for plugin in instance.child_plugin_instances %}
+		{% render_plugin plugin %}
+	{% endfor %}
+{% elif not instance.state and not request.user.is_authenticated or request.GET.auth_view == "false" and not instance.state %}
+	{% for plugin in instance.child_plugin_instances %}
+		{% render_plugin plugin %}
+	{% endfor %}
+{% endif %}

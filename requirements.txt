@@ -21,4 +21,4 @@ six
 psycopg2-binary
 django-cacheops
 django-redis
-
+django-phonenumber-field

@@ -1,0 +1,392 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: #f0f0f0;
+}
+
+body, input, textarea, button {
+	font-family: SourceSansPro, Arial, sans-serif;
+}
+
+form {
+	margin-bottom: 0;
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+}
+
+th {
+	background-color: #484848;
+	color: #fff;
+}
+
+tr {
+	height: 16pt;
+	background-color: #fff;
+}
+
+tr:nth-child(even){
+	background-color: #fcfcfc;
+}
+
+tr:hover {
+	background-color: rgba(9,117,184,0.10);
+	filter: brightness(95%);
+	
+	transition: filter 0.5s ease;
+	transition: background-color 0.5s ease;
+}
+
+td, th {
+	text-align: left;
+	padding-top: 6pt;
+	padding-left: 4pt;
+	vertical-align: middle;
+	padding-bottom: 5pt;
+}
+
+h1, h2 {
+	margin-top: 0;
+}
+
+img {
+	max-width: 100%;
+}
+
+input::placeholder {
+	text-align: center;
+	opacity: 1;
+	color: #999;
+}
+
+ul.errorlist {
+	list-style-type: none;
+	padding-left: 0;
+}
+
+.absright {
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+.textright {
+	text-align: right;
+}
+
+.floatright {
+	float: right;
+}
+
+.textcenter {
+	text-align: center;
+}
+
+.centerflex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.pad10 {
+	padding: 10pt;
+}
+
+.margin30 {
+	margin: 30pt;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.inlineblock {
+	display: inline-block;
+}
+
+.leftlogo {
+	display: inline-block;
+	padding-left: 10pt;
+}
+
+#content {
+padding: 5pt;
+flex: 1;
+}
+
+#navnoscript {
+transition: opacity 0.5s ease, box-shadow 0.5s ease;
+opacity: 0;
+pointer-events: none;
+}
+
+
+.indexlogo {
+	background: url('/static/img/brlogo-white.png') no-repeat center center;
+	width: 70pt;
+	background-size: 80%;
+}
+
+.icon-down-open {
+	position: absolute;
+	bottom: 2pt;
+	left: 0;
+	right: 0;
+	text-align: center;
+	transition: opacity 0.6s ease;
+	color: #FFF;
+	opacity: 0.20;
+}
+
+.loginform {
+	text-align: right;
+	width: 200pt;
+	display: inline-block;
+}
+
+.loginform input[type=text], .loginform input[type=password] {
+	width: 100%;
+	font-size: 20pt;
+	border-radius: 4px;
+	padding-left: 5pt;
+	margin: 10pt 0;
+	padding: 2pt 4pt 0 4pt;
+	background-color: #eee;
+	border: 1px solid transparent;
+	color: #000;
+	display: block;
+}
+
+.loginform button {
+	background-color: #14284b;
+	border-radius: 4px;
+	
+	padding: 3pt 3pt 0 3pt;
+	font-size: 15pt;
+	color: #ffffff;
+	border: 1px solid transparent;
+	text-transform: uppercase;
+	
+	transition: background-color 0.5s ease;
+}
+
+.loginform button:hover {
+	background-color: #064a76;
+}
+
+.textcontent {
+	padding: 0pt 15pt 0pt 15pt;
+}
+
+.blockbutton {
+	background-color: #14284b;
+	border-radius: 4px;
+	display: inline-block;
+	padding: 5pt;
+	font-size: 12pt;
+	color: #ffffff;
+	text-align: center;
+	border: 1px solid transparent;
+	color: white;
+	text-decoration: inherit;
+	transition: background-color 0.5s ease;
+}
+
+.blockbutton:hover {
+	background-color: #064a76;
+}
+
+.blockbutton strong {
+	font-size: 20pt;
+}
+
+#footer {
+background: #14284b;
+color: white;
+}
+
+#footer div {
+text-align: center;
+font-size: 10pt;
+padding: 2pt 2pt 1pt 2pt;
+}
+
+#footer a:link,
+#footer a:visited,
+#footer a:active,
+#footer a {
+position: absolute;
+right: 0;
+display: inline-block;
+color: #fff;
+text-decoration: none;
+padding-right: 2pt;
+}
+
+#footer a:hover {
+box-shadow: inset 0px 0px 0px 20pt rgba(255,255,255,0.08);
+}
+
+.pagewrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.navcontainer {
+	position: relative;
+	display: block;
+	user-select: none;
+	-moz-user-select: none;
+	font-size: 0;
+	background-color: #14284B;
+	border-bottom: 2pt solid #064a76;
+}
+
+.navitem {
+	display: inline-block;
+	font-size: 13pt;
+	color: white;
+	vertical-align: top;
+}
+
+a.navitem, .navtext {
+	padding: 10pt 7pt 6pt 7pt;
+	transition: background-color 0.5s ease;
+	text-align: center;
+}
+
+.navtext:hover, a.navitem:hover {
+	background-color: rgba(255,255,255,0.08);
+}
+
+[name=expandnav] {
+	display: none;
+}
+
+[name=expandnav]:checked ~ .navbox {
+	margin-bottom: 28pt;
+	background-color: rgba(255,255,255,0.08);
+}
+
+[name=expandnav]:checked ~ .navblock {
+	visibility: visible;
+	opacity: 1;
+	margin-top: -28pt;
+}
+
+.navbox {
+	display: block;
+	cursor: pointer;
+	text-align: center;
+	transition: margin 0.1s ease;
+}
+
+.navblock {
+	display: block;
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: #224581;
+	opacity: 0;
+	transition: opacity 0.1s ease-out 0.1s;
+	z-index: 10;
+}
+
+.navitem:link,
+.navitem:visited,
+.navitem:hover,
+.navitem:active,
+.navitem {
+	color: #fff;
+	text-decoration: none;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.navcontainer form {
+	margin: 4.5pt 10pt 4.5pt 10pt;
+}
+
+.navcontainer input[type=text], .navcontainer input[type=password],
+.fancyfields input {
+	display: inline-block;
+	border-radius: 4px;
+	border: 1px solid transparent;
+	font-size: 15pt;
+	padding: 4pt 2pt 2pt 2pt;
+	height: 20pt;
+	width: 160pt;
+	background-color: #fefefe;
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+}
+
+.navcontainer button, .fancyfields button {
+	margin-left: 2pt;
+	background-color: #e29e4a;
+	border-radius: 4px;
+	padding: 3pt 3pt 0 3pt;
+	height: 20pt;
+	font-size: 14pt;
+	color: #ffffff;
+	border: 1px solid transparent;
+	text-transform: uppercase;
+	font-weight: bold;
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+	transition: background-color 0.5s ease;
+}
+
+.navcontainer button:hover, .fancyfields button:hover {
+	background-color: #FCB416;
+}
+
+/* Dirty hack to fix currently broken modal popups in django-cms */
+.cms-modal-iframe {
+	margin-top: -20% !important;
+	margin-left: -35% !important;
+	margin-right: 0 !important;
+	margin-bottom: 0 !important;
+	height: 500px !important;
+	width: 800px !important;
+}
+
+.bgimage-hero::before {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: .4;
+	z-index: -1;
+	background: url('/static/img/broda-herochair.jpg') no-repeat center center fixed;
+	background-size: cover;
+}
+
+.glassarea {
+	background-color: rgba(255,255,255,0.93);
+	box-shadow: 0px 0px 5pt 5pt rgba(255,255,255,0.93);
+	padding: 10pt;
+	margin: 10pt;
+	display: inline-block;
+	vertical-align:top;
+}
+
+.contentarea {
+	display: inline-block;
+	vertical-align: top;
+	margin-bottom: 5pt;
+	background-color: #fff;
+	padding: 15pt;
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+}

@@ -1,0 +1,12 @@
+{% load staticfiles %}
+<div class='loginform glassarea'>
+	<div>
+		<img src='{% static "img/brlogo-blue.png" %}'>
+	</div>
+	<form method="post" action="/login/?next={{ request.get_full_path }}">
+		{% csrf_token %}
+		<input name="username" type="text" required placeholder='Username' autofocus/>
+		<input name="password" type="password" required placeholder='Password'/>
+		<button type="submit">Login</button>
+	</form>
+</div>

@@ -1,0 +1,39 @@
+{% load menu_tags static %}
+<nav class="navcontainer">
+	<a class='navitem indexlogo' href="/">&nbsp;</a>
+	{% for child in children %}
+		{% if child.children %}
+		<label class="navitem">
+			<input type="radio" name="expandnav">
+			<span class='navbox navtext'>{{ child.get_menu_title }}<!--<span class="icon-down-open"></span>--></span>
+			<span class="navblock">
+			{% for grandchild in child.children %}
+				<a class='navitem' href="{{ grandchild.attr.redirect_url|default:grandchild.get_absolute_url }}">
+					{{ grandchild.get_menu_title }}
+				</a>
+			{% endfor %}
+			</span>
+		</label>
+		{% else %}
+		<a class='navitem' href="{{ child.attr.redirect_url|default:child.get_absolute_url }}">{{ child.get_menu_title }}</a>
+		{% endif %}
+	{% endfor %}
+	<div class='floatright'>
+		{% if user.is_authenticated %}
+			<a class='navitem' href="/logout">Logout</a>
+		{% else %}
+		<label class="navitem">
+			<input type="radio" name="expandnav">
+			<span class='navbox navtext'>Login</span>
+			<span class="navblock">
+				<form class='textright' method="post" action='/login/?next={{request.path}}'>
+					{% csrf_token %}
+					<input id="id_username" name="username" type="text" required placeholder='Username'/>
+					<input id="id_password" name="password" type="password" required placeholder='Password'/>
+					<button type="submit">Login</button>
+				</form>
+			</span>
+		</label>
+		{% endif %}
+	</div>
+</nav>

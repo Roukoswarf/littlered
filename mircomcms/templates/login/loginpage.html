@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class='centerflex margin30 bgimage-hero'>
+	{% if form.errors.items %}
+		<div class='glassarea'>
+		{% for key,value in form.errors.items %}
+			{{ value.as_ul }}
+		{% endfor %}
+		<p>Forgot your username or password? <a href='/passwordreset'>Recover your account</a></p>
+		</div>
+	{% endif %}
+	{% if request.GET.reset_success %}
+		<div class='glassarea'>
+			Password reset successful, please log in.
+		</div>
+	{% endif %}
+	<div class='loginform glassarea'>
+		<div>
+			<img src='{% static "img/brlogo-blue.png" %}'>
+		</div>
+		<form method="post">
+			{% csrf_token %}
+			<input name="username" type="text" required placeholder='Username' autofocus/>
+			<input name="password" type="password" required placeholder='Password'/>
+			<button type="submit">Login</button>
+		</form>
+	</div>
+</div>
+{% endblock %}
