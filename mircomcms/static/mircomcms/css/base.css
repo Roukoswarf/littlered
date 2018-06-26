@@ -10,7 +10,7 @@ body {
 }
 
 body, input, textarea, button {
-	font-family: SourceSansPro, Arial, sans-serif;
+	font-family: sans-serif;
 }
 
 form {
@@ -40,7 +40,7 @@ tr:nth-child(even){
 tr:hover {
 	background-color: rgba(9,117,184,0.10);
 	filter: brightness(95%);
-	
+
 	transition: filter 0.5s ease;
 	transition: background-color 0.5s ease;
 }
@@ -169,13 +169,13 @@ pointer-events: none;
 .loginform button {
 	background-color: #14284b;
 	border-radius: 4px;
-	
+
 	padding: 3pt 3pt 0 3pt;
 	font-size: 15pt;
 	color: #ffffff;
 	border: 1px solid transparent;
 	text-transform: uppercase;
-	
+
 	transition: background-color 0.5s ease;
 }
 
@@ -389,4 +389,13 @@ a.navitem, .navtext {
 	background-color: #fff;
 	padding: 15pt;
 	box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+}
+
+.cms-sideframe-history {
+    display: none !important;
+}
+
+.cms-sideframe-controls {
+    top: 45px !important;
+    /*right: 0px !important;*/
 }

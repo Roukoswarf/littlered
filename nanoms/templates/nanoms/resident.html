@@ -1,0 +1,52 @@
+{% load sekizai_tags static %}
+<form action="/nanoms-api/add_resident/" method="post">
+	{{ form.non_field_errors }}
+	{% csrf_token %}
+
+	<input type="hidden" name="next" value="{{ request.path }}">
+
+	<div>
+		{{ form.first_name.errors }}
+		{{ form.first_name.label_tag }}
+		{{ form.first_name }}
+	</div>
+
+	<div>
+		{{ form.last_name.errors }}
+		{{ form.last_name.label_tag }}
+		{{ form.last_name }}
+	</div>
+
+	<div>
+		{{ form.unit.errors }}
+		{{ form.unit.label_tag }}
+		{{ form.unit }}
+	</div>
+
+	<div>
+		{{ form.phone.errors }}
+		{{ form.phone.label_tag }}
+		{{ form.phone }}
+	</div>
+
+	<div>
+		{{ form.email.errors }}
+		{{ form.email.label_tag }}
+		{{ form.email }}
+	</div>
+
+	<div>
+		{{ form.sip_username.errors }}
+		{{ form.sip_username.label_tag }}
+		{{ form.sip_username }}
+	</div>
+
+	<div>
+		{{ form.sip_password.errors }}
+		{{ form.sip_password.label_tag }}
+		{{ form.sip_password }}
+	</div>
+
+		<input type="submit" value='Submit'>
+	</div>
+</form>

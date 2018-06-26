@@ -4,8 +4,9 @@
 """
 
 from django.conf.urls import url
-from nanoms.views import things
+from nanoms import views
 
 urlpatterns = [
-    url(r'things/$', things),
+    url(r'things/$', views.things),
+    url(r'add_building/$', views.add_building),
 ]

@@ -1,0 +1,47 @@
+{% load sekizai_tags static %}
+<form action="/nanoms-api/add_building/" method="post">
+    {{ form.non_field_errors }}
+    {% csrf_token %}
+
+    <input type="hidden" name="next" value="{{ request.path }}">
+
+    <div>
+        {{ form.street_address.errors }}
+        {{ form.street_address.label_tag }}
+        {{ form.street_address }}
+    </div>
+
+    <div>
+        {{ form.unit_no.errors }}
+        {{ form.unit_no.label_tag }}
+        {{ form.unit_no }}
+    </div>
+
+    <div>
+        {{ form.city.errors }}
+        {{ form.city.label_tag }}
+        {{ form.city }}
+    </div>
+
+    <div>
+        {{ form.postal_code.errors }}
+        {{ form.postal_code.label_tag }}
+        {{ form.postal_code }}
+    </div>
+
+    <div>
+        {{ form.province.errors }}
+        {{ form.province.label_tag }}
+        {{ form.province }}
+    </div>
+
+    <div>
+        {{ form.country.errors }}
+        {{ form.country.label_tag }}
+        {{ form.country }}
+    </div>
+
+    <div>
+        <input type="submit" value='Submit'>
+    </div>
+</form>

@@ -5,7 +5,8 @@ from cmsplugin_filer_utils import FilerPluginManager
 from django.db.models.fields.related import ManyToManyField
 from django.contrib.auth.models import User
 from phonenumber_field.modelfields import PhoneNumberField
-
+from django.dispatch import receiver
+from django.db.models.signals import post_save
 
 def to_dict(instance):
     """Generic function to convert a model to a printable dict."""
@@ -30,6 +31,14 @@ class BaseModel(models.Model):
 
     def __str__(self):
         return str(to_dict(self))
+
+
+class Account(BaseModel):
+    name = models.CharField(
+        max_length=255,
+        verbose_name="Company Name",
+        )
+    address = models.ForeignKey('Building', related_name='+')
 
 class Building(BaseModel):
     street_address = models.CharField(
@@ -68,12 +77,7 @@ class Building(BaseModel):
         verbose_name="Country",
         )
 
-class Account(BaseModel):
-    name = models.CharField(
-        max_length=255,
-        verbose_name="Company Name",
-        )
-    address = models.ManyToManyField(Building)
+    account = models.ForeignKey(Account)
 
 class Resident(BaseModel):
     first_name = models.CharField(max_length=20)
@@ -110,9 +114,17 @@ class UserProperties(BaseModel):
         verbose_name="Contact Phone Number",
         )
 
-    account = models.ForeignKey(Account, null=True, on_delete=models.CASCADE)
+    account = models.ForeignKey(Account, blank=True, null=True, on_delete=models.CASCADE)
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     class Meta(BaseModel.Meta):
         verbose_name_plural = "Extra Properties"
+
+@receiver(post_save, sender=User)
+def create_userproperties(*_sender, instance, created, **_kwargs):
+    """Event to link blank dealer object on user creation, prevent lookup failures"""
+
+    if created and not hasattr(instance, 'userproperties'):
+        UserProperties.objects.create(user=instance)
+
