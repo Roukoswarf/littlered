@@ -103,3 +103,5 @@ smedia/
 project.db
 **/migrations/*
 settings.py
+
+apps/

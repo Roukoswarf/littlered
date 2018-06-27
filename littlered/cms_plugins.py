@@ -7,7 +7,7 @@ from django.utils.translation import ugettext_lazy as _
 from cms.plugin_base import CMSPluginBase
 from cms.plugin_pool import plugin_pool
 from djangocms_text_ckeditor.models import Text
-from mircomcms.models import AuthContent
+from .models import AuthContent
 
 @plugin_pool.register_plugin
 class AuthContentPlugin(CMSPluginBase):
