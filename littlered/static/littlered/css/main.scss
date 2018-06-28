@@ -1,0 +1,254 @@
+/* COLORS */
+$primary-color: #04182b;
+$secondary-color: #14283b;
+$background-color: #f0f0f0;
+
+/* FONTS */
+$text-font-stack: sans-serif;
+$header-font-stack: $text-font-stack;
+
+/* STUFF THAT SHOULD BE IN base.scss */
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background: $background-color;
+}
+
+body, input, textarea, button {
+	font-family: $text-font-stack;
+}
+
+#content {
+    padding: 5pt;
+    flex: 1;
+}
+
+.textright {
+	text-align: right;
+}
+
+.floatright {
+	float: right;
+}
+
+.hidden {
+	display: none !important;
+}
+
+/* HEADER */
+.navcontainer {
+	position: relative;
+	display: block;
+	user-select: none;
+	-moz-user-select: none;
+	font-size: 0;
+	background-color: #14284B;
+	border-bottom: 2pt solid #064a76;
+
+	.indexlogo {
+		background: url('/static/img/mircom-logo-white.png') no-repeat center center;
+		width: 70pt;
+		background-size: 80%;
+	}
+
+	form {
+		margin: 4.5pt 10pt 4.5pt 10pt;
+	}
+
+	input[type=text], input[type=password] {
+		display: inline-block;
+		border-radius: 4px;
+		border: 1px solid transparent;
+		font-size: 11pt;
+		padding: 4pt 2pt 2pt 2pt;
+		height: 20pt;
+		width: 160pt;
+		background-color: #fefefe;
+		box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+	}
+
+	button {
+		margin-left: 2pt;
+		background-color: #e29e4a;
+		border-radius: 4px;
+		padding: 3pt 3pt 0 3pt;
+		height: 20pt;
+		font-size: 11pt;
+		color: #ffffff;
+		border: 1px solid transparent;
+		text-transform: uppercase;
+		font-weight: bold;
+		box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.25);
+		transition: background-color 0.5s ease;
+
+		&:hover {
+			background-color: #FCB416;
+		}
+	}
+}
+
+.navitem {
+	display: inline-block;
+	font-size: 10pt;
+	color: white;
+	vertical-align: top;
+}
+
+a.navitem, .navtext {
+	padding: 10pt 7pt 6pt 7pt;
+	transition: background-color 0.5s ease;
+	text-align: center;
+}
+
+.navtext:hover, a.navitem:hover {
+	background-color: rgba(255,255,255,0.08);
+}
+
+[name=expandnav] {
+	display: none;
+}
+
+[name=expandnav]:checked ~ .navbox {
+	margin-bottom: 28pt;
+	background-color: rgba(255,255,255,0.08);
+}
+
+[name=expandnav]:checked ~ .navblock {
+	visibility: visible;
+	opacity: 1;
+	margin-top: -28pt;
+}
+
+.navbox {
+	display: block;
+	cursor: pointer;
+	text-align: center;
+	transition: margin 0.1s ease;
+}
+
+.navblock {
+	display: block;
+	visibility: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	background-color: #224581;
+	opacity: 0;
+	transition: opacity 0.1s ease-out 0.1s;
+	z-index: 10;
+}
+
+.navitem {
+    &:link,
+    &:visited,
+    &:hover,
+    &:active,
+    & {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+/* LOGIN PAGE */
+.loginform {
+	text-align: right;
+	width: 200pt;
+	display: inline-block;
+
+    input[type=text], input[type=password] {
+        width: 100%;
+        font-size: 14pt;
+        border-radius: 4px;
+        padding-left: 5pt;
+        margin: 10pt 0;
+        padding: 2pt 4pt 0 4pt;
+        background-color: #eee;
+        border: 1px solid transparent;
+        color: #000;
+        display: block;
+    }
+
+    button {
+        background-color: #14284b;
+        border-radius: 4px;
+
+        padding: 3pt 3pt 0 3pt;
+        font-size: 12pt;
+        color: #ffffff;
+        border: 1px solid transparent;
+        text-transform: uppercase;
+
+        transition: background-color 0.5s ease;
+    }
+
+    button:hover {
+        background-color: #064a76;
+    }
+}
+
+.textcenter {
+	text-align: center;
+}
+
+.centerflex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.pad10 {
+	padding: 10pt;
+}
+
+.margin30 {
+	margin: 30pt;
+}
+
+ul.errorlist {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* FOOTER */
+#footer {
+    background: #14284b;
+    color: white;
+
+    div {
+        text-align: center;
+        font-size: 10pt;
+        padding: 2pt 2pt 1pt 2pt;
+    }
+
+    a {
+    	&:link,
+        &:visited,
+        &:active,
+        & {
+	        position: absolute;
+	        right: 0;
+	        display: inline-block;
+	        color: #fff;
+	        text-decoration: none;
+	        padding-right: 2pt;
+        }
+
+        &:hover {
+            box-shadow: inset 0px 0px 0px 20pt rgba(255,255,255,0.08);
+  	    }
+    }
+}
+
+.pagewrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}

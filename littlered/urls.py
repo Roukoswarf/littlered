@@ -32,6 +32,8 @@ urlpatterns += [
 ]
 
 urlpatterns += [
+    #url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
+    #url(r'^jet/', include('jet.urls', 'jet')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^filer/', include('filer.urls')),
     url(r'^', include('filer.server.urls')),

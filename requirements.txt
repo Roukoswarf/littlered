@@ -24,4 +24,11 @@ psycopg2-binary
 django-cacheops
 django-redis
 django-phonenumber-field
-django-flat-responsive
+#django-flat-responsive
+django-pipeline
+libsass
+libsasscompiler
+csscompressor
+django-jet
+google-api-python-client
+feedparser

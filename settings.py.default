@@ -1,0 +1,253 @@
+import os
+import sys
+from django.utils.translation import gettext_lazy as _
+
+DATA_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(DATA_DIR, 'media')
+STATIC_ROOT = os.path.join(DATA_DIR, 'static')
+STATICFILES_STORAGE = 'pipeline.storage.PipelineStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.CachedFileFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = 'dm5r0&#77f8nsi^8%az!7lz0hp^y=sz4^&!rg1+%)+lead7-!k'
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = True
+
+ALLOWED_HOSTS = ['144.217.95.111']
+
+
+# Application definition
+
+
+ROOT_URLCONF = 'urls'
+
+WSGI_APPLICATION = 'extra.wsgi.application'
+
+LANGUAGE_CODE = 'en'
+
+TIME_ZONE = 'America/Toronto'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'littlered', 'static'),
+)
+SITE_ID = 1
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, 'littlered', 'templates'),],
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.template.context_processors.media',
+                'django.template.context_processors.csrf',
+                'django.template.context_processors.tz',
+                'sekizai.context_processors.sekizai',
+                'django.template.context_processors.static',
+                'cms.context_processors.cms_settings'
+            ],
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'django.template.loaders.eggs.Loader'
+            ],
+        },
+    },
+]
+
+MIDDLEWARE = (
+    'cms.middleware.utils.ApphookReloadMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+    'littlered.middleware.toolbar.ToolbarMiddleware',
+)
+
+INSTALLED_APPS = (
+    #'jet.dashboard',
+    #'jet',
+    'flat_responsive',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.admin',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.staticfiles',
+    'django.contrib.messages',
+    'cms',
+    'menus',
+    'sekizai',
+    'treebeard',
+    'djangocms_text_ckeditor',
+    'filer',
+    'easy_thumbnails',
+    'djangocms_column',
+    'djangocms_file',
+    'djangocms_link',
+    'djangocms_picture',
+    'djangocms_style',
+    'djangocms_snippet',
+    'djangocms_googlemap',
+    'djangocms_video',
+    'phonenumber_field',
+    'pipeline',
+    'littlered',
+    'apps.nanoms',
+)
+
+LANGUAGES = (
+    ('en', _('English')),
+)
+
+CMS_LANGUAGES = {
+    1: [
+        {
+            'code': 'en',
+            'name': _('English'),
+            'redirect_on_fallback': False,
+            'public': True,
+            'hide_untranslated': False,
+        },
+    ],
+}
+
+CMS_TEMPLATES = (
+    ## Customize this
+    ('base.html', 'base'),
+)
+
+CMS_PERMISSION = True
+
+CMS_PLACEHOLDER_CONF = {}
+
+DATABASES = {
+    'default': {
+        'CONN_MAX_AGE': 0,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'HOST': 'localhost',
+        'NAME': 'project.db',
+        'PASSWORD': '',
+        'PORT': '',
+        'USER': ''
+    }
+}
+
+MIGRATION_MODULES = {
+
+}
+
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters'
+)
+
+FILER_ENABLE_PERMISSIONS = True
+FILER_IS_PUBLIC_DEFAULT = False
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login/'
+
+CMS_PLUGIN_CACHE = True
+
+APPEND_SLASH = True
+
+#CKEDITOR_SETTINGS = {
+    #'contentsCss': ['/static/mircomcms/css/base.css'],
+#}
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#EMAIL_HOST = 'localhost'
+#EMAIL_HOST_USER = 'noreply@mysite.com'
+#DEFAULT_FROM_EMAIL = 'noreply@mysite.com'
+#EMAIL_HOST_PASSWORD = 'password'
+#EMAIL_PORT = 587
+#EMAIL_USE_TLS = True
+
+PHONENUMBER_DB_FORMAT = 'E164'
+
+#CACHES = {
+    #"default": {
+        #"BACKEND": "django_redis.cache.RedisCache",
+        #"LOCATION": "unix:///run/redis/redis.sock?db=0",
+        #"OPTIONS": {
+            #"CLIENT_CLASS": "django_redis.client.DefaultClient",
+            #"IGNORE_EXCEPTIONS": True,
+        #}
+    #}
+#}
+
+#DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = True
+#SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+#SESSION_CACHE_ALIAS = "default"
+
+#CACHEOPS_REDIS = "unix:///run/redis/redis.sock?db=1"
+#CACHEOPS_DEGRADE_ON_FAILURE = True
+#CACHEOPS = {
+    ## Automatically cache any User.objects.get() calls for 15 minutes
+    ## This also includes .first() and .last() calls,
+    ## as well as request.user or post.author access,
+    ## where Post.author is a foreign key to auth.User
+    #'auth.user': {'ops': 'get', 'timeout': 60*15},
+
+    ## Automatically cache all gets and queryset fetches
+    ## to other django.contrib.auth models for an hour
+    #'auth.*': {'ops': {'fetch', 'get'}, 'timeout': 60*60},
+
+    ## Cache all queries to Permission
+    ## 'all' is an alias for {'get', 'fetch', 'count', 'aggregate', 'exists'}
+    #'auth.permission': {'ops': 'all', 'timeout': 60*60},
+
+    ## Enable manual caching on all other models with default timeout of an hour
+    ## Use Post.objects.cache().get(...)
+    ##  or Tags.objects.filter(...).order_by(...).cache()
+    ## to cache particular ORM request.
+    ## Invalidation is still automatic
+    #'*.*': {'ops': (), 'timeout': 60*60},
+#}
+
+JET_DEFAULT_THEME = 'light-gray'
+JET_SIDE_MENU_COMPACT = True
+
+from extra import pipeline_helpers
+PIPELINE = {
+    'COMPILERS': (
+        'pipeline.compilers.es6.ES6Compiler',
+        'libsasscompiler.LibSassCompiler',
+    ),
+    'CSS_COMPRESSOR': 'extra.compressors.CssCompressor',
+    'JS_COMPRESSOR': 'pipeline.compressors.uglifyjs.UglifyJSCompressor',
+    'STYLESHEETS': pipeline_helpers.find_css(),
+    'JAVASCRIPT': pipeline_helpers.find_js(),
+}
