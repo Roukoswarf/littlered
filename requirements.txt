@@ -32,3 +32,4 @@ csscompressor
 django-jet
 google-api-python-client
 feedparser
+django-extensions
